@@ -51,9 +51,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void calcular(){
-
         try {
-
             int valor1 = Integer.parseInt(txtNum1.getText().toString());
             int valor2 = Integer.parseInt(txtNum2.getText().toString());
             String opcionSeleccionada = spOperaciones.getSelectedItem().toString();
@@ -86,11 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-
-
         } catch (Exception e){
             Toast.makeText(this, "Error en la operacion de los datos "+e.getMessage(), Toast.LENGTH_SHORT).show();
-
         }
     }
 
