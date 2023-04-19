@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvRes;
     private Spinner spOperaciones;
     private Button btnCalcular;
+
+    private CheckBox chkDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         btnCalcular = (Button) findViewById(R.id.btnCalcular);
         spOperaciones = (Spinner) findViewById(R.id.spinner);
 
+        chkDialog = (CheckBox) findViewById(R.id.chkDialog);
+
         String [] ListaOperaciones = {"Sumar", "Restar", "Multiplicar", "Dividir"};
         ArrayAdapter<String> Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ListaOperaciones);
         spOperaciones.setAdapter(Adapter);
@@ -52,22 +57,41 @@ public class MainActivity extends AppCompatActivity {
             int valor1 = Integer.parseInt(txtNum1.getText().toString());
             int valor2 = Integer.parseInt(txtNum2.getText().toString());
             String opcionSeleccionada = spOperaciones.getSelectedItem().toString();
+            String checkbox = "";
 
             if(opcionSeleccionada.equals("Sumar")){
                 int suma = valor1 + valor2;
                 tvRes.setText(String.valueOf(suma));
+                if(chkDialog.isChecked()){
+                    checkbox += chkDialog.getText().toString();
+                    new Mensajito("Resultado: ", String.valueOf(suma), "OKis").show(getSupportFragmentManager(), "XD");
+                }
             } else if (opcionSeleccionada.equals("Restar")) {
                 int resta = valor1 - valor2;
                 tvRes.setText(String.valueOf(resta));
+                if(chkDialog.isChecked()){
+                    new Mensajito("Resultado: ", String.valueOf(resta), "OKis").show(getSupportFragmentManager(), "XD");
+                }
             } else if (opcionSeleccionada.equals("Multiplicar")) {
                 int multiplicacion = valor1 * valor2;
                 tvRes.setText(String.valueOf(multiplicacion));
+                if(chkDialog.isChecked()){
+                    new Mensajito("Resultado: ", String.valueOf(multiplicacion), "OKis").show(getSupportFragmentManager(), "XD");
+                }
             } else if (opcionSeleccionada.equals("Dividir")) {
                 float division = (Float.parseFloat(String.valueOf(valor1)) / Float.parseFloat(String.valueOf(valor2)));
                 tvRes.setText(String.valueOf(division));
+                if(chkDialog.isChecked()){
+                    new Mensajito("Resultado: ", String.valueOf(division), "OKis").show(getSupportFragmentManager(), "XD");
+                }
             }
+
+
+
         } catch (Exception e){
             Toast.makeText(this, "Error en la operacion de los datos "+e.getMessage(), Toast.LENGTH_SHORT).show();
+
         }
     }
+
 }
