@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             int multiplicacion = valor1 * valor2;
             tvRes.setText(String.valueOf(multiplicacion));
         } else if (opcionSeleccionada.equals("Dividir")) {
-            float division = (valor1 / valor2);
+            float division = (Float.parseFloat(String.valueOf(valor1)) / Float.parseFloat(String.valueOf(valor2)));
             tvRes.setText(String.valueOf(division));
         }
     }
