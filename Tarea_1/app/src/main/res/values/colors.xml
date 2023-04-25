@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="scarlet">#FC1C00</color>
+    <color name="whitesmoke">#EDEDED</color>
+    <color name="honeydew">#FEFFFE</color>
+    <color name="sealbrown">#0F0B07</color>
+    <color name="martini">#B5ABA4</color>
+    <color name="falured">#591B08</color>
+    <color name="richgold">#B4461F</color>
+    <color name="judgegrey">#625A48</color>
+    <color name="twine">#CA975C</color>
+    <color name="mischka">#B0B0B1</color>
+    <color name="hitgrey">#A4A5A5</color>
+
+
+</resources>

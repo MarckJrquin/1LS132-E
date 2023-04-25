@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <!-- Cambia el color del texto -->
+        <item name="android:textColor">@color/sealbrown</item>
+
+        <!-- Cambia el color del cursor -->
+        <item name="colorControlNormal">@color/hitgrey</item>
+
+        <!-- Cambia el color de fondo del SearchView -->
+        <item name="android:background">@color/honeydew</item>
+
+        <!-- Cambia el icono del SearchView -->
+        <!--<item name="searchIcon">@drawable/ic_search</item>-->
+
+        <!-- Cambia el color del icono del SearchView -->
+        <item name="queryBackground">@android:color/transparent</item>
+
+        <!-- Establece el texto de sugerencia en el SearchView -->
+        <item name="queryHint">@string/search_hint</item>
+
+        <!-- Cambia el color de la línea inferior del SearchView -->
+        <item name="android:textColorHint">@color/hitgrey</item>
+    </style>
+</resources>
