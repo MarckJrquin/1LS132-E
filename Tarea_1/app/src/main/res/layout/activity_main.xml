@@ -12,13 +12,13 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:scaleType="centerCrop"
             android:src="@drawable/food_momo"
-            android:background="@drawable/rounded_bottom"/>
+            app:shapeAppearanceOverlay="@style/ImagenRedondeada"/>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -31,6 +31,8 @@
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:queryHint="Search food..."
+                android:iconifiedByDefault="false"
                 app:theme="@style/SearchViewStyle"/>
 
         </androidx.cardview.widget.CardView>

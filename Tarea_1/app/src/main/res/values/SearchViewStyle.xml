@@ -17,7 +17,7 @@
         <item name="queryBackground">@android:color/transparent</item>
 
         <!-- Establece el texto de sugerencia en el SearchView -->
-        <item name="queryHint">@string/search_hint</item>
+        <!--<item name="queryHint">@string/search_hint</item> -->
 
         <!-- Cambia el color de la línea inferior del SearchView -->
         <item name="android:textColorHint">@color/hitgrey</item>
