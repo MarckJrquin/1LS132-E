@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#F7F8F6">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="10dp"
+                android:text="Tarea N°2"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/editTextNumber"
+                android:layout_below="@+id/textViewTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:inputType="number"
+                android:textSize="20sp"
+                android:hint="Ingresar número"
+                android:background="@drawable/edittext_template"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_below="@id/editTextNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"
+                style="@style/ProgressBar.Horizontal"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="0"/>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutDatePicker"
+                android:layout_below="@id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/linearlayout_template_color_border">
+
+                <TextView
+                    android:id="@+id/textViewHourTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:text="Seleccionar Fecha"
+                    android:padding="10dp"
+                    android:clipToPadding="true"
+                    android:background="#3A9082"/>
+
+                <DatePicker
+                    android:id="@+id/dateSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:datePickerMode="spinner"
+                    android:calendarViewShown="false"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutTimePicker"
+                android:layout_below="@id/linearLayoutDatePicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/linearlayout_template_color_border">
+
+                <TextView
+                    android:id="@+id/textViewDateTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:text="Seleccionar Hora"
+                    android:padding="10dp"
+                    android:clipToPadding="true"
+                    android:background="#3A9082"/>
+
+                <TimePicker
+                    android:id="@+id/timeSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:timePickerMode="spinner"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutButtons"
+                android:layout_below="@id/linearLayoutTimePicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mostrar Datos"
+                    style="@style/ButtonStyle"
+                    android:background="@drawable/button_template"/>
+
+                <Button
+                    android:id="@+id/buttonClear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Limpiar Datos"
+                    android:layout_marginLeft="10dp"
+                    style="@style/ButtonStyle"
+                    android:background="@drawable/button_template"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewResult"
+                android:layout_below="@id/linearLayoutButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:padding="20dp"
+                android:textSize="18sp"
+                android:textColor="#3A9082"
+                android:background="@drawable/linearlayout_template_color_border"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+    
+</RelativeLayout>

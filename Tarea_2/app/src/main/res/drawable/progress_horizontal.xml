@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Define la forma de la ProgressBar -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="5dp"/>
+            <gradient
+                android:startColor="#B1B1B1"
+                android:endColor="#B1B1B1"
+                android:angle="360"
+                android:type="linear"/>
+        </shape>
+    </item>
+    <!-- Define la ProgressBar en sí misma -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <corners android:radius="5dp"/>
+                <gradient
+                    android:startColor="#8BC34A"
+                    android:endColor="#ACF655"
+                    android:angle="360"
+                    android:type="linear"/>
+            </shape>
+        </clip>
+    </item>
+</layer-list>
