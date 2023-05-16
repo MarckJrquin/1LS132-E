@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/miNew"
+        android:title="Agregar Nuevo"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/create"/>
+    <item
+        android:id="@+id/miNew2"
+        android:title="Agregar OC"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/contact"/>
+</menu>

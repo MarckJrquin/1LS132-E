@@ -1,5 +1,7 @@
 package com.example.wasapplagio;
 
+import android.os.Bundle;
+
 public class Chats {
 
 
@@ -9,6 +11,10 @@ public class Chats {
     private String Hora;
     private String ChatCount;
 
+    public Chats(){
+
+    }
+
 
     public Chats(String nombre, String chat, String hora, String chatCount, int foto) {
         Nombre = nombre;
@@ -17,6 +23,7 @@ public class Chats {
         ChatCount = chatCount;
         Foto = foto;
     }
+
 
     public int getFoto() {
         return Foto;
@@ -56,6 +63,27 @@ public class Chats {
 
     public void setChatCount(String chatCount) {
         ChatCount = chatCount;
+    }
+
+
+    public Bundle ChatToBundle(){
+        Bundle b = new Bundle();
+        b.putString("nombre", this.getNombre());
+        b.putString("chat", this.getChat());
+        b.putString("hora", this.getHora());
+        b.putInt("count", Integer.parseInt(this.getChatCount()));
+        return b;
+    }
+
+
+    public Chats restoreBundle(Bundle b){
+        return new Chats(
+                b.getString("nombre"),
+                b.getString("chat"),
+                b.getString("hora"),
+                Integer.toString(b.getInt("count")),
+                R.drawable.ic_launcher_background
+        );
     }
 
 

@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     public void showData(){
         //Set ProgressBar Value
         String inputText = editText.getText().toString();
-        int progressValue = 12;
+        int progressValue = 0;
         if(inputText.isEmpty()){
             Toast.makeText(this, "Error en campo vacio", Toast.LENGTH_SHORT).show();
         }else{

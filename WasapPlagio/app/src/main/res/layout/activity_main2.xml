@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FormActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Este es el titulo"
+        android:textSize="50dp"/>
+
+    <EditText
+        android:id="@+id/txtNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="nombre"
+        android:textSize="50dp"/>
+
+    <EditText
+        android:id="@+id/txtChat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="escribe algo aqui"
+        android:textSize="30sp"/>
+
+    <TimePicker
+        android:id="@+id/tpHora"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner"/>
+
+    <EditText
+        android:id="@+id/txtChats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="cant chats"
+        android:inputType="number"
+        android:textSize="50dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agregalo io!"
+        android:onClick="AgregarChat"/>
+
+
+
+</LinearLayout>
