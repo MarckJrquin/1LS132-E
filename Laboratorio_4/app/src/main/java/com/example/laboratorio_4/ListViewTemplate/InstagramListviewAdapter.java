@@ -13,17 +13,12 @@ import com.example.laboratorio_4.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
-public class InstagramListviewAdapter extends ArrayAdapter<Chat>
-{
-
+public class InstagramListviewAdapter extends ArrayAdapter<Chat> {
     private  List<Chat> opciones = new ArrayList<>();
-
     public InstagramListviewAdapter(Context context, List<Chat> datos){
         super(context, R.layout.listview_layout_template, datos);
         opciones= datos;
     }
-
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View item = inflater.inflate(R.layout.listview_layout_template, null);
@@ -39,7 +34,6 @@ public class InstagramListviewAdapter extends ArrayAdapter<Chat>
 
         TextView lblTime = (TextView)item.findViewById(R.id.timestamp);
         lblTime.setText(opciones.get(position).getTime());
-
         return(item);
     }
 }

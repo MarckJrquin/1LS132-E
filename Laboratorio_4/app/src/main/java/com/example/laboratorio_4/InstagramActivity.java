@@ -22,7 +22,7 @@ public class InstagramActivity extends AppCompatActivity {
 
     ListView lstOpciones;
 
-    List<Chat> chats = new ArrayList<Chat>();;
+    List<Chat> chats = new ArrayList<Chat>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
