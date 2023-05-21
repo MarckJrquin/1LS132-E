@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".FormActivity">
+
+    <EditText
+        android:id="@+id/txtDia"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Dia en numero"/>
+    <EditText
+        android:id="@+id/txtDiaL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Dia en letras"/>
+    <EditText
+        android:id="@+id/txtMes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mes en letras"/>
+    <EditText
+        android:id="@+id/txtTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Titulo"/>
+    <EditText
+        android:id="@+id/txtContenido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:hint="Redacta tu contenido"/>
+    <EditText
+        android:id="@+id/txtEnlace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Https://..."/>
+
+    <Button
+        android:onClick="PassData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cargar Datos"/>
+
+</LinearLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp">
+
+    <TextView
+        android:id="@+id/lblDiaL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="Jueves"/>
+
+    <TextView
+        android:id="@+id/lblDia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblDiaL"
+        android:layout_marginLeft="25dp"
+        android:textSize="25dp"
+        android:text="15"/>
+
+    <TextView
+        android:id="@+id/lblMes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblDia"
+        android:layout_marginLeft="15dp"
+        android:text="Marzo"/>
+
+    <TextView
+        android:id="@+id/lblTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/lblDiaL"
+        android:layout_marginLeft="25dp"
+        android:textSize="20dp"
+        android:textColor="#d3041c"
+        android:text="Titutlo"/>
+    <TextView
+        android:id="@+id/lblContenido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:maxLines="100"
+        android:layout_below="@+id/lblTitulo"
+        android:layout_toRightOf="@+id/lblDia"
+        android:layout_marginLeft="35dp"
+        android:autoSizeTextType="uniform"
+        android:text="Super contenido largo"/>
+    <TextView
+        android:id="@+id/lblEnlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/lblContenido"
+        android:layout_toRightOf="@+id/lblMes"
+        android:textColor="#d3041c"
+        android:textStyle="bold"
+        android:layout_marginLeft="25dp"
+        android:text="Enlace en rojito"/>
+</RelativeLayout>
