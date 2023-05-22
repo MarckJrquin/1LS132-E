@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,6 +58,21 @@ public class MainActivity extends AppCompatActivity {
         String email = editTextEmail.getText().toString();
         String password = editTextPassword.getText().toString();
 
+        if (TextUtils.isEmpty(email)) {
+            editTextEmail.setError("Ingrese un correo electrónico");
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            editTextEmail.setError("Ingrese un correo electrónico válido");
+            return;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            editTextPassword.setError("Ingrese una contraseña");
+            return;
+        }
+
         // Implementacion de la lógica de autenticación
         // autenticación básica
         if (validateCredentials(email, password)) {
@@ -75,6 +91,14 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return false; // Credenciales inválidas
+    }
+
+    private boolean isValidEmail(String email) {
+        // Verificación de formato del correo electrónico usando una expresión regular
+        // Uso de expresión regular predefinida de Android o personalizarla según necesidades
+        // ejemplo básico:
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        return email.matches(emailPattern);
     }
 
     @Override

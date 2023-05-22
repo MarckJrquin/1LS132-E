@@ -4,48 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FormCreateNewUserActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/edittext_background"
         android:hint="Ingresar correo"
-        android:textSize="30sp"/>
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#AAAAAA"
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/edittext_background"
         android:hint="Ingresar contraseña"
-        android:textSize="30sp"/>
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#AAAAAA"
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/edittext_background"
         android:hint="Nombre"
-        android:textSize="30sp"/>
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#AAAAAA" />
 
     <EditText
         android:id="@+id/editTextID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/edittext_background"
         android:hint="Cédula"
-        android:textSize="30sp"/>
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#AAAAAA"
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/editTextMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/edittext_background"
         android:hint="Mensaje"
-        android:textSize="30sp"/>
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#AAAAAA"
+        android:maxLines="3" />
 
     <Button
         android:id="@+id/buttonAddNewUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Agregalo io!"/>
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_background"
+        android:text="Agregalo io!"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:padding="12dp" />
 
 </LinearLayout>
