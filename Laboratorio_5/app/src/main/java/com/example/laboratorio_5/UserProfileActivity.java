@@ -21,10 +21,8 @@ import java.util.List;
 public class UserProfileActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_CREATE_USER = 1;
-    private ActivityResultLauncher<Intent> createUserLauncher;
     ListView lstUsers;
     UserAdapter adapterComp;
-
     private List<User> userList;
 
     @SuppressLint("MissingInflatedId")
@@ -34,9 +32,6 @@ public class UserProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile);
         this.initControls();
 
-        // Llama al método para configurar el createUserLauncher
-        setupCreateUserLauncher();
-
         Bundle b = getIntent().getExtras();
 
         if (b != null && b.containsKey("userList")){
@@ -44,30 +39,33 @@ public class UserProfileActivity extends AppCompatActivity {
         }
     }
 
-    private void setupCreateUserLauncher() {
-        createUserLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    if (result.getResultCode() == RESULT_OK) {
-                        Intent data = result.getData();
-                        if (data != null) {
-                            User newUser = data.getParcelableExtra("newUser");
-                            if (newUser != null) {
-                                userList.add(newUser);
-                                adapterComp.notifyDataSetChanged();
-                            }
-                        }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE_CREATE_USER && resultCode == RESULT_OK && data != null) {
+            User newUser = data.getParcelableExtra("newUser");
+            if (newUser != null) {
+                userList.add(newUser);
+                if (adapterComp != null) {
+                    adapterComp.notifyDataSetChanged();
+
+                    ArrayList<User> updatedUserList = data.getParcelableArrayListExtra("userListUpdate");
+                    if (updatedUserList != null && !updatedUserList.isEmpty()) {
+                        userList = updatedUserList;
                     }
                 }
-        );
+            }
+        }
     }
 
     @Override
     public void onBackPressed() {
-        Intent resultIntent = new Intent();
-        resultIntent.putExtra("userListUpdate", new ArrayList<>(userList));
-        setResult(RESULT_OK, resultIntent);
-
+        if (userList != null && !userList.isEmpty()) {
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("userListUpdate", new ArrayList<>(userList));
+            setResult(RESULT_OK, resultIntent);
+        }
         super.onBackPressed();
     }
 
@@ -75,10 +73,12 @@ public class UserProfileActivity extends AppCompatActivity {
         lstUsers = (ListView)findViewById(R.id.lstUsers);
     }
 
-    private void LoadListview(Bundle b) {
-        userList = b.<User>getParcelableArrayList("userList");
-        adapterComp = new UserAdapter(getApplicationContext(), userList);
-        lstUsers.setAdapter(adapterComp);
+    private void LoadListview(Bundle bundle) {
+        userList = bundle.getParcelableArrayList("userList");
+        if (userList != null && !userList.isEmpty()) {
+            adapterComp = new UserAdapter(getApplicationContext(), userList);
+            lstUsers.setAdapter(adapterComp);
+        }
     }
 
     @Override
@@ -89,15 +89,11 @@ public class UserProfileActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
         int itemId = item.getItemId();
-
         if (itemId == R.id.createNewUser) {
-            Intent i = new Intent(getApplicationContext(), FormCreateNewUserActivity.class);
-            createUserLauncher.launch(i);
+            Intent intent = new Intent(getApplicationContext(), FormCreateNewUserActivity.class);
+            startActivityForResult(intent, REQUEST_CODE_CREATE_USER);
         }
-
         return super.onOptionsItemSelected(item);
     }
-
 }

@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void userValidation(){
-
         String email = editTextEmail.getText().toString();
         String password = editTextPassword.getText().toString();
 

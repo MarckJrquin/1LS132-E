@@ -91,7 +91,6 @@ public class FormCreateNewUserActivity extends AppCompatActivity {
         // Uso de expresión regular predefinida de Android o personalizarla según necesidades
         // ejemplo básico:
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-
         return email.matches(emailPattern);
     }
 }
