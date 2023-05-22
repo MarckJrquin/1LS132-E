@@ -1,8 +1,12 @@
 package com.example.laboratorio_5;
 
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class User {
+import androidx.annotation.NonNull;
+
+public class User implements Parcelable {
 
     private int image;
     private String email;
@@ -73,24 +77,39 @@ public class User {
     }
 
 
-    public Bundle UserToBundle(){
-        Bundle b = new Bundle();
-        b.putString("email", this.getEmail());
-        b.putString("password", this.getPassword());
-        b.putString("name", this.getName());
-        b.putString("id", this.getId());
-        b.putString("message", this.getMessage());
-        return b;
+    protected User(Parcel in) {
+        image = in.readInt();
+        email = in.readString();
+        password = in.readString();
+        name = in.readString();
+        id = in.readString();
+        message = in.readString();
     }
 
-    public User restoreBundle(Bundle b){
-        return new User(
-                R.drawable.profile_picture,
-                b.getString("email"),
-                b.getString("password"),
-                b.getString("name"),
-                b.getString("id"),
-                b.getString("message")
-        );
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(image);
+        dest.writeString(email);
+        dest.writeString(password);
+        dest.writeString(name);
+        dest.writeString(id);
+        dest.writeString(message);
     }
 }

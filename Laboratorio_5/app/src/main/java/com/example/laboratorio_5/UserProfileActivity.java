@@ -3,20 +3,29 @@ package com.example.laboratorio_5;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class UserProfileActivity extends AppCompatActivity {
 
+    private static final int REQUEST_CODE_CREATE_USER = 1;
+    private ActivityResultLauncher<Intent> createUserLauncher;
     ListView lstUsers;
     UserAdapter adapterComp;
+
+    private List<User> userList;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -25,33 +34,52 @@ public class UserProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile);
         this.initControls();
 
+        // Llama al método para configurar el createUserLauncher
+        setupCreateUserLauncher();
+
         Bundle b = getIntent().getExtras();
-        if (b != null){
-            LoadListviewBundle(b);
-        }else {
-            LoadListview();
+
+        if (b != null && b.containsKey("userList")){
+            LoadListview(b);
         }
+    }
+
+    private void setupCreateUserLauncher() {
+        createUserLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK) {
+                        Intent data = result.getData();
+                        if (data != null) {
+                            User newUser = data.getParcelableExtra("newUser");
+                            if (newUser != null) {
+                                userList.add(newUser);
+                                adapterComp.notifyDataSetChanged();
+                            }
+                        }
+                    }
+                }
+        );
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("userListUpdate", new ArrayList<>(userList));
+        setResult(RESULT_OK, resultIntent);
+
+        super.onBackPressed();
     }
 
     private void initControls() {
         lstUsers = (ListView)findViewById(R.id.lstUsers);
     }
 
-    private void LoadListviewBundle(Bundle b) {
-
-        User user = new User().restoreBundle(b);
-        List<User> users = this.LlenarListViewCompuesto();
-        users.add(user);
-
-        adapterComp = new UserAdapter(getApplicationContext(), users);
+    private void LoadListview(Bundle b) {
+        userList = b.<User>getParcelableArrayList("userList");
+        adapterComp = new UserAdapter(getApplicationContext(), userList);
         lstUsers.setAdapter(adapterComp);
     }
-
-    private void LoadListview() {
-        adapterComp = new UserAdapter(getApplicationContext(), this.LlenarListViewCompuesto());
-        lstUsers.setAdapter(adapterComp);
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -66,18 +94,10 @@ public class UserProfileActivity extends AppCompatActivity {
 
         if (itemId == R.id.createNewUser) {
             Intent i = new Intent(getApplicationContext(), FormCreateNewUserActivity.class);
-            startActivity(i);
+            createUserLauncher.launch(i);
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    private List<User> LlenarListViewCompuesto(){
-        List<User> users = new ArrayList<User>();
-        users.add(new User(R.drawable.profile_picture, "marck@gmail.com", "12345", "Marcos Ñurinda", "20-53-4479", "Laboratorio 5"));
-        users.add(new User(R.drawable.profile_picture, "nilsa@outlook.com", "12345", "Nilsa Correa", "8-123-456", "Laboratorio 5"));
-        users.add(new User(R.drawable.profile_picture, "leslie@gmail.com", "12345", "Leslie Moran", "4-987-6543", "Laboratorio 5"));
-        users.add(new User(R.drawable.profile_picture, "leidy@outlook.com", "12345", "Leidy Almeida", "8-345-622", "Laboratorio 5"));
-        return users;
-    }
 }

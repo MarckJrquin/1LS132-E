@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,18 +39,59 @@ public class FormCreateNewUserActivity extends AppCompatActivity {
 
     public void addUser(){
         try {
-            User newUser = new User(
-                    R.drawable.profile_picture,
-                    email.getText().toString(),
-                    password.getText().toString(),
-                    name.getText().toString(),
-                    id.getText().toString(),
-                    message.getText().toString()
-            );
+            String userEmail = email.getText().toString();
+            String userPassword = password.getText().toString();
+            String userName = name.getText().toString();
+            String userId = id.getText().toString();
+            String userMessage = message.getText().toString();
 
-            Intent i = new Intent(getApplicationContext(), UserProfileActivity.class);
-            i.putExtras(newUser.UserToBundle());
-            startActivity(i);
-        }catch (Exception e){}
+            if (TextUtils.isEmpty(userEmail)) {
+                email.setError("Ingrese un correo electrónico");
+                return;
+            }
+
+            if (!isValidEmail(userEmail)) {
+                email.setError("Ingrese un correo electrónico válido");
+                return;
+            }
+
+            if (TextUtils.isEmpty(userPassword)) {
+                password.setError("Ingrese una contraseña");
+                return;
+            }
+
+            if (TextUtils.isEmpty(userName)) {
+                name.setError("Ingrese un nombre");
+                return;
+            }
+
+            if (TextUtils.isEmpty(userId)) {
+                id.setError("Ingrese una cédula");
+                return;
+            }
+
+            if (TextUtils.isEmpty(userMessage)) {
+                message.setError("Ingrese un mensaje");
+                return;
+            }
+
+            User newUser = new User( R.drawable.profile_picture, userEmail, userPassword, userName, userId, userMessage);
+
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("newUser", newUser);
+            setResult(RESULT_OK, resultIntent);
+            finish();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private boolean isValidEmail(String email) {
+        // Verificación de formato del correo electrónico usando una expresión regular
+        // Uso de expresión regular predefinida de Android o personalizarla según necesidades
+        // ejemplo básico:
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+        return email.matches(emailPattern);
     }
 }
