@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistroActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Este es el Registro"
+        android:gravity="center"
+        android:textSize="48dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtUserRegist"
+        android:textSize="32dp"
+        android:hint="Introduza el usuairo"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtPassRegist"
+        android:textSize="32dp"
+        android:inputType="textPassword"
+        android:hint="Introduza el contrasena"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtNombreRegist"
+        android:textSize="32dp"
+        android:hint="Introduza el nombre"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtCedulaRegist"
+        android:textSize="32dp"
+        android:hint="Introduza la cedula"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtEdadRegist"
+        android:textSize="32dp"
+        android:inputType="number"
+        android:hint="Introduza la edad"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar usuario"
+        android:onClick="GuardarPersona"
+        android:textSize="32dp"/>
+
+</LinearLayout>
